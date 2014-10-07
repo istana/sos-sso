@@ -1,0 +1,5 @@
+This is modification of dialup.conf from freeRADIUS 2.x. The main changes are that some attributes were renamed,
+becasuse they collided with reserved attributes in Ruby on Rails. It is not compatible with the original schema.sql!
+
+The other change was change of postauth_query to not log user passwords in cleartext.
+
