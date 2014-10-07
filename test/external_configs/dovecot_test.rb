@@ -5,7 +5,7 @@ require "external_configs"
 # TODO extend tests
 class DovecotTest < ActiveSupport::TestCase
 	def setup
-		@dovecot = ExternalConfigs.read(File.join(Rails.root, "external_configs", "dovecot-sql.conf.ext"))
+		@dovecot = ExternalConfigs.read(File.join(Rails.root, "external_configs", "dovecot", "dovecot-sql.conf.ext"))
 		@foouser = User.find_by(username: 'foouser')
 	end
 
