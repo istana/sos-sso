@@ -7,6 +7,9 @@ Web administration system for user accounts suitable for small organizations or 
 
 Screenshots are the best and most useful!
 
+![Welcome page](http://myrtana.sk/sos-sso/welcome-page.jpg)
+![Add a user](http://myrtana.sk/sos-sso/add-user.jpg)
+![RADIUS auths](http://myrtana.sk/sos-sso/radpostauth.jpg)
 
 ## Introduction ##
 
