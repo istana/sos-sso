@@ -4,7 +4,7 @@ require "external_configs"
 # this class tests if SQL commands are ok
 class LibnssMysqlCommandsTest < ActiveSupport::TestCase
 	def setup
-		@nss = ExternalConfigs.read_libnss(File.join(Rails.root, "external_configs", "libnss-mysql.cfg"))
+		@nss = ExternalConfigs.read_libnss(File.join(Rails.root, "external_configs", "libnss", "libnss-mysql.cfg"))
 	end
 
 	def validate_pwd(userraw, user)

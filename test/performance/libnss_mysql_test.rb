@@ -8,7 +8,7 @@ class LibnssMysqlTest
 
 	def setup
 		DatabaseCleaner.clean
-		@nss = ExternalConfigs.read_libnss(File.join(Rails.root, "external_configs", "libnss-mysql.cfg"))
+		@nss = ExternalConfigs.read_libnss(File.join(Rails.root, "external_configs", "libnss", "libnss-mysql.cfg"))
 		generate_nss_dataset(1000, 1000)
 	end
 

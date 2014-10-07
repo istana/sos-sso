@@ -27,7 +27,7 @@ class ReadExternalFilesTest < MiniTest::Test
 	end
 
 	def test_libnss_mysql_root
-		@nss = ExternalConfigs.read_libnss(File.join(@conf_path, "libnss-mysql-root.cfg"))
+		@nss = ExternalConfigs.read_libnss(File.join(@conf_path, "libnss", "libnss-mysql-root.cfg"))
 
 		assert_operator 2, :==, @nss.length
 		assert_equal true, @nss.include?("username")
@@ -37,7 +37,7 @@ class ReadExternalFilesTest < MiniTest::Test
 	end
 
 	def test_libnss_mysql
-		@nss = ExternalConfigs.read_libnss(File.join(@conf_path, "libnss-mysql.cfg"))
+		@nss = ExternalConfigs.read_libnss(File.join(@conf_path, "libnss", "libnss-mysql.cfg"))
 
 		assert_operator 12, :<=, @nss.length
 
