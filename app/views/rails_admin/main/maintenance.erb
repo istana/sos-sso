@@ -1,0 +1,96 @@
+<div>
+	<div>
+		<h2>Chýbajúce domovské zložky</h2>
+		<p>Zavolať user.create_homedir na daného užívateľa, alebo vytvoriť, chmod+chown ručne</p>
+		<% dirs = SystemTasks::Users.missing_homedirs.sort %>
+		<p>
+			<% if dirs.size == 0 %>
+				Všetko OK, žiadne chýbajúce domovské zložky.
+			<% else %>
+				<% dirs.each do |res| %>
+					<% detail = if res[1] == 'noexist'
+							'zložka neexistuje'
+						elsif res[1] == 'file'
+							'domovská zložka je súbor'
+						end	%>
+					<%= res[0] %> - <%= detail %><br>
+				<% end %>
+			<% end %>
+		</p>
+	</div>
+
+	<div>
+		<h2>Nadbytočné domovské zložky</h2>
+		v <%= Rails.application.config.homedirs %>
+		<p>
+			<% dirs = SystemTasks::Users.redundant_homedirs(Rails.application.config.homedirs) %>
+			<% if dirs.size == 0 %>
+				Všetko OK, žiadne nadbytočné domovské zložky.
+			<% else %>
+				<% dirs.each do |user| %>
+					<%= user %>
+				<% end %>
+			<% end %>
+		</p>
+	</div>
+
+	<div>
+		<h2>Použité slabé šifrovacie schémy na heslá (MD5, SHA1, SHA256)</h2>
+		<p>Treba prepísať heslo užívateľa</p>
+		<p>
+			<% users = SystemTasks::Users.weak_hash_function_in_password %>
+			<% if users.size == 0 %>
+				Všetko OK. Skontrolovaných <%= User.all.count %> užívateľov.
+			<% else %>
+				<%= users.join(" ") %>
+			<% end %>
+		</p>
+	</div>
+
+	<div>
+		<h2>Vlastník a oprávnenia domovských zložiek</h2>
+		<p>Treba ručne upraviť uprávnenia zložky</p>
+		<% SystemTasks::Users.homedirs_check_permissions.each_pair do |username, problems| %>
+			<%= username %> - <%= problems.join(", ") %>
+		<% end %>
+	</div>
+
+	<div>
+		<h2>Samba</h2>
+		<% if Rails.application.config.samba %>
+			<% redundant, missing =  SystemTasks::Users.redundant_missing_samba_users %>
+		<% else %>
+			<% redundant, missing = [["Samba disabled"]] * 2 %>
+		<% end %>
+
+		<h3>Naviac</h3>
+		<p>
+			<% if redundant.size == 0 %>
+				V Sambe nie sú žiadni užívatelia naviac
+			<% else %>
+				<%= redundant.join(" ") %>
+			<% end %>
+		</p>
+
+		<h3>Chýbajúci</h3>
+		<p>Treba prepísať heslo užívateľa</p>
+		<p>
+			<% if missing.size == 0 %>
+				V Sambe nie sú žiadni chýbajúci užívatelia
+			<% else %>
+				<%= missing.join(" ") %>
+			<% end %>
+		</p>
+</div>
+
+
+<div>
+	<h2>Nevalidní užívatelia</h2>
+	<p>Ak chýba NTLM password, tak treba prepísať heslo.</p>
+	<% User.all.each do |user| %>
+		<% if !user.valid? %>
+			<%= user.username %> - <%= user.errors.full_messages.join(",") %><br>
+		<% end %>
+	<% end %>
+</div>
+			

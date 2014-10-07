@@ -1,0 +1,4 @@
+# add as the last in the chain of permissions,
+# because sudo will pick the last matching rule
+
+myuser ALL=NOPASSWD:/usr/local/sbin/sosssoroot

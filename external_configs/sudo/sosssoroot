@@ -1,0 +1,306 @@
+#!/usr/bin/env ruby
+
+# ULTRA PARANOID MODE!
+# this script is part of *sos-sso* project
+# mostly hand tested
+
+# sudo has not enough granularity rights for parameters
+# so there are allowed commands
+# when editing take care, that arguments ARE NOT EMPTY!
+# (rm -rf /network/home instead of rm -rf /network/home/alice)
+
+require 'optparse'
+require 'cocaine'
+require 'active_support/core_ext/object/blank.rb'
+require 'open3'
+
+# TODO catch Cocaine::ExitStatus error
+
+# script only allows to work in $home_base directory
+# because of security. Attacker could set home to "/"
+# and delete whole root
+$home_base = File.join("/", "network", "home")
+
+$options = {}
+#stdinlines = ARGF.read.split("\n")
+
+$o = OptionParser.new do |opts|
+	opts.banner = "Usage: sosssoroot [options]"
+
+	opts.on("--user USERNAME", "Specify user USERNAME") do |u|
+		$options[:user] = u.strip
+	end
+
+	opts.on("--group GROUPNAME", "Specify group GROUPNAME") do |g|
+		$options[:group] = g.strip
+	end
+
+	opts.on("--sambalist", "List Samba users") do
+		$options[:action] = "sambalist"
+	end
+
+	opts.on("--sambaa", "Add Samba user. Specify --user") do
+		$options[:action] = "sambaa"
+	end
+
+	opts.on("--sambax", "Remove Samba. Specify --user") do
+		$options[:action] = "sambax"
+	end
+
+	opts.on("--create-home", "Create home directory, skel, chown, chmod. Specify --user and --group") do
+		$options[:action] = "create_home"
+	end
+
+	opts.on("--fix-home", "Recursive chmod and chown for home directory. Specify --user and --group") do
+		$options[:action] = "fix_home"
+	end
+
+	opts.on("--archive-home", "Compress homedir and remove it. Specify --user") do
+		$options[:action] = "archive_home"
+	end
+
+	opts.on("--set-user-quota BLOCKSOFT,BLOCKHARD,INODESOFT,INODEHARD", Array, "Set quota. Specify --user") do |bs, bh, is, ih|
+		# optparser don't handle more parameters well, need to check for presence
+		if !bs || !bh || !is || !ih
+			puts opts
+			exit(1)
+		end
+
+		# these parameters ARE NOT SANITIZED because of Array in optparse, we MUST convert them to integer
+		$options[:blocksoft] = bs.strip.to_i
+		$options[:blockhard] = bh.strip.to_i
+		$options[:inodesoft] = is.strip.to_i
+		$options[:inodehard] = ih.strip.to_i
+		$options[:action] = "set_user_quota"
+	end
+
+	opts.on("--remove-quota", "Deletes quota. Specify --user or --group") do
+		$options[:action] = "remove_quota"
+	end
+
+	opts.on("--get-user-quota", "Gets user quota. Specify --user") do
+		$options[:action] = "get_user_quota"
+	end
+
+	opts.on("--get-group-quota", "Gets group quota. Specify --group") do
+		$options[:action] = "get_group_quota"
+	end
+
+	opts.on_tail("-h", "--help", "show this message") do
+		puts opts
+		exit(1)
+	end
+
+end
+
+begin
+	$o.parse!
+rescue OptionParser::MissingArgument
+	puts $o.help
+	exit(1)
+end
+
+
+# basic sanity check, ultra paranoid
+$options.each_pair do |opt, parameters|
+	raise("option cannot be nil") if opt.nil?
+	raise("parameters must be hash") if parameters.nil?
+end
+
+# ensure that ARGV is empty, so ARGF would read only STDIN and not files from ARGV
+if ARGV.size > 0
+	puts $options.inspect
+	puts "", "ARGV should be nil. Probably wrong usage of parameters.", ""
+	puts $o.help
+	exit(1)
+end
+
+# test in virtual environment or test computer!
+def infer_homedir(username)
+	# mitigate blank username rm -rf /network/home/
+	if username.blank?
+		raise("Username cannot be empty!")
+	# mitigate path traversal rm -rf /network/home/../../etc/shadow
+	elsif username !~ /\A[\w\.-]+\z/
+		raise("Invalid format of username")
+	end
+
+	File.join($home_base, username)
+end
+
+def fix_homedir(username, groupname)
+	chmod_homedir(username, groupname, infer_homedir(username))
+	chown_homedir(username, groupname, infer_homedir(username))
+end
+
+## lower level functions
+def chmod_homedir(username, groupname, directory)
+	puts Cocaine::CommandLine.new("chmod", "2711 -R :directory").run(
+													:username => username,
+													:groupname => groupname,
+													:directory => directory)
+end
+
+def chown_homedir(username, groupname, directory)
+	puts Cocaine::CommandLine.new("chown", "-R :username::groupname :directory").run(
+													:username => username,
+													:groupname => groupname,
+													:directory => directory)
+end
+
+private :chmod_homedir, :chown_homedir
+
+def require_params(base, *params)
+	# ordinary user won't bump into this
+	if !base
+		raise("Options is nil")
+	end
+
+	params.each do |p|
+		if base[p].blank?
+			puts "", "Blank parameter value: #{p}", ""
+			puts $o.help
+			exit(1)
+		end
+	end
+end
+
+# list Samba users
+if $options[:action] == "sambalist"
+	# pdbedit -L -w
+	puts Cocaine::CommandLine.new("pdbedit", "--list --smbpasswd-style").run
+	exit
+
+# add user with password or update password for a user
+elsif $options[:action] == "sambaa"
+	require_params(:user)
+
+	password = ARGF.read.strip
+
+	if password.blank?
+		puts "Password cannot be blank"
+		exit(1)
+	end
+
+	# pdbedit -t -a -u :user
+	# smbpasswd is not user, because it could sync password in unix account
+	# cocaine cannot run
+	# echo -e 'heslo\nheslo' | pdbedit --password-from-stdin --create --user 'sir'
+	c = Cocaine::CommandLine.new("pdbedit", "--password-from-stdin --create --user :user"
+													).command(:user => $options[:user])
+
+	Open3.popen3(c) do |stdin, stdout, stderr, t|
+		stdin.puts "#{password}\n#{password}"
+		stdin.close
+		puts stdout.read
+		puts stderr.read
+		stdout.close
+		stderr.close
+		# exit status
+		puts t.value
+	end
+
+	exit
+
+# remove user from Samba
+elsif $options[:action] == "sambax"
+	require_params($options, :user)
+	puts Cocaine::CommandLine.new("pdbedit", "--delete --user :user"
+													).run(:user => $options[:user])
+	exit
+
+# create home directory
+elsif $options[:action] == "create_home"
+	require_params($options, :user, :group)
+
+	username = $options[:user]
+	groupname = $options[:group]
+
+	# paranoia ftw
+	if username.blank? || groupname.blank?
+		puts "username or groupname is blank"
+		exit(1)
+	end
+
+	puts Cocaine::CommandLine.new("mkdir", "-p :directory").run(:directory => infer_homedir(username))
+	puts Cocaine::CommandLine.new("cp", "-a /etc/skel/. :directory").run(:directory => infer_homedir(username))
+	fix_homedir(username, groupname)
+
+	exit
+
+# fix owner and permissions of homedir
+elsif $options[:action] == "fix_home"
+	require_params(:user, :group)
+
+	username = $options[:user]
+	groupname = $options[:group]
+
+	# paranoia ftw
+	if username.blank? || groupname.blank?
+		puts "username or groupname is blank"
+		exit(1)
+	end
+
+	fix_homedir(username, groupname)
+
+	exit
+
+elsif $options[:action] == "archive_home"
+	require_params($options, :user)
+
+	puts Cocaine::CommandLine.new("tar", "-cJf /network/deleted_users/:user.tar.xz :directory"
+															 ).run(
+																 :user => $options[:user],
+																 :directory => infer_homedir($options[:user])
+															 )
+
+	puts Cocaine::CommandLine.new("rm", "-rf /network/home/:user"
+															 ).run(
+																 :user => $options[:user]
+															 )
+	exit
+
+elsif $options[:action] == "get_user_quota"
+	require_params($options, :user)
+
+	puts Cocaine::CommandLine.new("quota", "--verbose --user :user"
+													).run(:user => $options[:user])
+	exit
+
+elsif $options[:action] == "set_user_quota"
+	require_params($options, :user, :blocksoft, :blockhard, :inodesoft, :inodehard)
+
+	# (paranoid) convert into integer again
+	if !$options[:blocksoft].is_a?(Integer) || !$options[:blockhard].is_a?(Integer) ||
+			!$options[:inodesoft].is_a?(Integer) || !$options[:inodehard].is_a?(Integer)
+		puts "quota value must be integer"
+		exit(1)
+	end
+
+	# set grace time to one week. This is global option and must be set before quota for a user,
+	# otherwise grace time will be none (only hardquota will be enforced, which is too late)
+	# on the other hand users without mail should have soft quota == hard quota, because warn mail won't reach them
+	puts Cocaine::CommandLine.new("setquota", "--user --edit-period 604800 604800 --all").run
+
+	# setquota -a -u :user x x x x
+	puts Cocaine::CommandLine.new("setquota", "--user :user :bs :bh :is :ih --all").run(
+		:user => $options[:user],
+		:bs => $options[:blocksoft].to_s,
+		:bh => $options[:blockhard].to_s,
+		:is => $options[:inodesoft].to_s,
+		:ih => $options[:inodehard].to_s
+	)
+	exit
+
+elsif $options[:action] == "remove_quota"
+	require_params($options, :user)
+
+	puts Cocaine::CommandLine.new("setquota", "--user :user 0 0 0 0 --all").run(
+		:user => $options[:user]
+	)
+
+	# we leave grace time set to one week
+
+	exit
+end
+

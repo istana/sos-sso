@@ -1,0 +1,52 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# fixtures works only with id
+foouser:
+  username: 'foouser'
+  password: '$6$salt$m13jYukYZjf4TPI7yE2BV6VrgXyrgPtcfQQ6GYCoSihS6xrFsovQS0x.hykY1XAZqAYHd59asgEW7Zyj82WGQ0'
+  ntlm_password: 'DEADBEEF'
+  homedir: '/home/foouser'
+  gid: <%= ActiveRecord::FixtureSet.identify(:world_dominators) %>
+  shell: '/bin/bash'
+  groups: [admin, g4a, world_dominators, mail, wifi]
+
+baruser:
+  username: 'baruser'
+  password: '$6$salt$m13jYukYZjf4TPI7yE2BV6VrgXyrgPtcfQQ6GYCoSihS6xrFsovQS0x.hykY1XAZqAYHd59asgEW7Zyj82WGQ0'
+  ntlm_password: 'DEADBEEF'
+  homedir: '/network/home/baruser'
+  gid: <%= ActiveRecord::FixtureSet.identify(:world_dominators) %>
+  shell: '/usr/bin/rssh'
+  groups: [admin, world_dominators, mail]
+
+bazuser:
+  username: 'bazuser'
+  password: '$6$salt$m13jYukYZjf4TPI7yE2BV6VrgXyrgPtcfQQ6GYCoSihS6xrFsovQS0x.hykY1XAZqAYHd59asgEW7Zyj82WGQ0'
+  ntlm_password: 'DEADBEEF'
+  homedir: '/home/bazuser'
+  gid: <%= ActiveRecord::FixtureSet.identify(:g4a) %>
+  groups: [g4a, samba]
+
+zoouser:
+  username: 'zoouser'
+  password: '$6$salt$m13jYukYZjf4TPI7yE2BV6VrgXyrgPtcfQQ6GYCoSihS6xrFsovQS0x.hykY1XAZqAYHd59asgEW7Zyj82WGQ0'
+  ntlm_password: 'DEADBEEF'
+  homedir: '/home/zoo'
+  gid: <%= ActiveRecord::FixtureSet.identify(:world_dominators) %>
+  shell: '/bin/bash'
+  active: false
+  groups: [world_dominators, samba, mail, wifi]
+
+# this user has nonexistent gid
+aaauser:
+  username: 'aaauser'
+  password: '$6$salt$m13jYukYZjf4TPI7yE2BV6VrgXyrgPtcfQQ6GYCoSihS6xrFsovQS0x.hykY1XAZqAYHd59asgEW7Zyj82WGQ0'
+  ntlm_password: 'DEADBEEF'
+  homedir: '/home/aaa'
+  gid: 111111111111111112
+  shell: '/bin/bash'
+  groups: [mail, wifi]

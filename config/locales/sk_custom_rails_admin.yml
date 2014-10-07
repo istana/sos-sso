@@ -1,0 +1,6 @@
+sk:
+  admin:
+    actions:
+      maintenance:
+        title: 'Údržba'
+        menu: 'Údržba'

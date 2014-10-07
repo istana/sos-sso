@@ -1,0 +1,56 @@
+sk:
+  activerecord:
+    models:
+      user: Užívateľ
+      alias: Alias
+      group: Skupina
+      radcheck: RADIUS užívateľ
+      radpostauth: RADIUS autentifikácia
+      admin: Administrátor
+    attributes:
+      user:
+        id: UID
+        username: Prihlasovacie meno
+        gid: GID
+        gecos: Gecos záznam
+        fullname: Celé meno
+        section: Oddelenie
+        phone: Telefón
+        email: Email
+        homedir: Domovská zložka
+        shell: Shell
+        password: Zahashované heslo
+        password_ntlm: Zahashované heslo v NTLM
+        password_cleartext: Heslo
+        generate_password: Vygenerovať heslo
+        primary_group: Primárna skupina
+        lstchg: Posledná zmena
+        min: Minimálna doba od zmeny hesla
+        max: Maximálna doba do zmeny hesla
+        warn: Počet dní pred varovaním
+        inact: xxx
+        expire: Kedy vyprší heslo
+        flag: rezerované
+        quota_mass: Kvóta údajov
+        quota_inode: Kvóta inodov (súborov)
+        active: Aktívny
+      alias:
+        active: Aktívny
+        name: Virtuálny názov
+        user_id: Užívateľ
+      group:
+        name: Názov
+        password: Heslo
+      radcheck: &radius
+        username: Login
+        attr: Atribút
+        op: Operátor
+        value: Hodnota
+      radpostauth:
+        user: Užívateľ
+        pass: Heslo
+        reply: Odpoveď
+        authdate: Dátum
+      admin:
+        email: Email
+        encrypted_password: Zašifrované heslo

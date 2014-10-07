@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+world_dominators:
+  name: 'world dominators'
+
+admin:
+  name: 'admin'
+
+g4a:
+  name: '4.A'
+
+wifi:
+  name: 'wifi'
+
+mail:
+  name: 'mail'
+
+samba:
+  name: 'samba'
+
+management:
+  name: 'management'
