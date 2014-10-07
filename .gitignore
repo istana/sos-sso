@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# ignore dolphin's config
+/.directory
+
+# ignore vim swap files
+*.sw?
+
