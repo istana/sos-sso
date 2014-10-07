@@ -1,4 +1,0 @@
-delimiter:
-  dovecot: "="
-  libnss: " "
-  postfix: "=" 
