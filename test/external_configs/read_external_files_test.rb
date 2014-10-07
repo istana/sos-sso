@@ -7,7 +7,7 @@ class ReadExternalFilesTest < MiniTest::Test
 	end
 
 	def test_dovecot_keys
-		@dovecot = ExternalConfigs.read(File.join(@conf_path, "dovecot-sql.conf.ext"))
+		@dovecot = ExternalConfigs.read(File.join(@conf_path, "dovecot", "dovecot-sql.conf.ext"))
 
 		# just in case, maybe change later
 		assert_operator 6, :>= , @dovecot.length
