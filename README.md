@@ -82,4 +82,4 @@ While the software is fit for production use, there are some things which needs 
 - use management group from config (username generation from fullname)
 - somehow test sosssoroot automatically
 - do something with currently unused tables from freeRADIUS
-
+- create separate user and rights for standard libnss (password to SQL is exposed to other shell users)
