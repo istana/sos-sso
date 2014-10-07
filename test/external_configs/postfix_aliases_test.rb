@@ -4,7 +4,7 @@ require "external_configs"
 # this class tests if SQL commands are ok
 class PostfixAliasesCommandsTest < ActiveSupport::TestCase
 	def setup
-		@aliases = ExternalConfigs.read(File.join(Rails.root, "external_configs", "postfix-mysql-aliases.cf"), "=", false)
+		@aliases = ExternalConfigs.read_postfix(File.join(Rails.root, "external_configs", "postfix", "postfix-mysql-aliases.cf"))
 
 		@fouser = get_users('fouser')
 		@fouser_raw = get_users_raw('fouser')

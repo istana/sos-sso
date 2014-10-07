@@ -3,12 +3,12 @@
 #
 
 # The user name and password to log into the mysql server.
-hosts = unix:/var/run/mysqld/mysqld.sock
-user = nss-user
-password = some_password
+hosts = 127.0.0.1
+user = sos-sso
+password = Isabelle
 
 # The database name on the servers.
-dbname = customer_database
+dbname = sos-sso-production
 
 # For Postfix 2.2 and later The SQL query template.
 # See mysql_table(5) for details.

@@ -18,7 +18,7 @@ class ReadExternalFilesTest < MiniTest::Test
 	end
 
 	def test_postfix_aliases
-		@postfix = ExternalConfigs.read_postfix(File.join(@conf_path, "postfix-mysql-aliases.cf"))
+		@postfix = ExternalConfigs.read_postfix(File.join(@conf_path, "postfix", "postfix-mysql-aliases.cf"))
 
 		%w{hosts user password dbname query}.each do |i|
 			assert_equal true, @postfix.include?(i)

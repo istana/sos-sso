@@ -1,0 +1,2 @@
+# change to this
+alias_maps = hash:/etc/aliases, mysql:/etc/postfix/postfix-mysql-aliases.cf 
