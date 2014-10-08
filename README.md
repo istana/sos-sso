@@ -33,30 +33,30 @@ Integrates with:
 
 ## Installation and configuration ##
 
-There are steps to run this application for skilled users. More detailed howto and complete steps will follow.
+Here are steps to run this application for skilled users. More detailed howto and complete steps will follow.
 
 - do not run this under root user
-- `git clone` this
+- `git clone http://github.com/istana/sos-sso` this
 - run `bundle install`
 - set up your database settings in `config/database.yml`
 - set up secret for cookies in `config/secrets.yml`
 - run `RAILS_ENV=production rake db:migrate assets:precompile`
 - set up [Phusion Passenger (mod_rails)](https://www.phusionpassenger.com/) or run `RAILS_ENV=production rails s`
 - add Admin user via `RAILS_ENV=production rails c`
-- merge configuration files with your configuration
+- merge configuration files from *external_configs* with your configuration
 - copy `external_configs/sudo/sosssoroot` into `/usr/local/sbin`, *chmod* 500 it and *chown* to root only
-- run this under *https* or run on localhost and access via ssh tunnel!
+- run this under *https* or run on localhost and access via SSH tunnel!
 - all should work
 
 ## License ##
 
-Copyright 2014 Ivan Stana. The license of *sos-sso* is AGPL for all files with some exceptions, so users of the softwre should be able to get source code of this application
+Copyright 2014 Ivan Stana. The license of *sos-sso* is AGPL for all files with some exceptions:
 
-- external_configs directory consists mostly of collection of configuration files taken from respective software
+- *external_configs* directory consists mostly of collection of configuration files taken from respective software
 - documentation is under CC0 license, equivalent to public domain
-- config directory is also CC0
-- any CSS, JavaScript and image in app/assets is also CC0
-- sos-sso uses many components and libraries with its own license
+- *config* directory is also CC0
+- any *CSS*, *JavaScript* and image in *app/assets* is also CC0
+- *sos-sso* uses many components and libraries with its own license
 
 At this point I don't really care about trademark and such stuff. But I want users to know they are using this software and they can inspect and maybe improve it. Also maybe should I relicense this to MIT license.
 
@@ -64,7 +64,7 @@ At this point I don't really care about trademark and such stuff. But I want use
 
 I've started this project, because I wanted something for managing teachers and students in a high school. Teachers should have mail account, some of them mail aliases. Students should have only access to their authenticated windows share on the server. And some of the teachers and students should have access to the network via RADIUS authentication.
 
-Of course I didn't found such piece of software. Tutorials for Dovecot-mysql and libnss-mysql were rather sketchy and didn't really modified SQL queries or SQL tables or columns. But I wanted to use the same data for more services, so I began to change the SQL queries. I've written automated tests to test if they are correct and because I modified the SQL schema and queries many (tens) times, it was a good idea. And later other things followed. I've finished this in six weeks, but there were more (failed) generations before this, so original idea is maybe two years old.
+Of course I didn't found such piece of software I wanted. Tutorials for Dovecot-mysql and libnss-mysql were rather sketchy and didn't really modified SQL queries or SQL tables or columns. But I wanted to use the same data for more services, so I began to change the SQL queries. I've written automated tests to test if they are correct and because I modified the SQL schema and queries many (tens) times, it was a good idea. Testing it manually would take insane amount of time and deter me from finishing this. And later other things followed. I've finished this in six weeks, but there were more (failed) generations before this, so original idea is maybe two years old.
 
 *sos-sso* is a shortname for *stredná odborná škola - single sign on*, in translation something like *specialized high school - single sign on*
 
@@ -72,14 +72,16 @@ Of course I didn't found such piece of software. Tutorials for Dovecot-mysql and
 
 While the software is fit for production use, there are some things which needs improvement:
 
-- authorization for users connected via freeRADIUS. The first generation of software of this idea had it. Requires communication with wifi access points
-- pair RADIUS users, DHCP requests with MAC addresses to track their devices use/abuse
+- authorization for users connected via freeRADIUS. Requires communication with wifi access points (ssh+iptables)
+- pair RADIUS users, DHCP requests and MAC addresses to track their devices use/abuse
 - more automated tests
-- better handling of non-ideal states like changing uid or username should chown and chmod his home directory, quota, samba, ...
+- better handling of non-ideal states like changing uid or username should chown and chmod his home directory, quota (uses username), samba (also uses username), ...
 - resolve many less important TODOs
 - some strings are hard coded in Slovak language
 - mail and wifi groups are hardcoded
 - use management group from config (username generation from fullname)
-- somehow test sosssoroot automatically
+- somehow test sosssoroot and system integration automatically (QEMU)
 - do something with currently unused tables from freeRADIUS
-- create separate user and rights for standard libnss (password to SQL is exposed to other shell users)
+- create separate user and rights for standard libnss (password to SQL is exposed to other shell users - for now you should restrict access to shell, i.e. set rssh for users)
+- respect active/inactive user for Samba
+
