@@ -84,3 +84,5 @@ Kým softvér už je vhodný pre používanie naostro, treba ešte vyriešiť, �
 - rob niečo s momentálne nevyužívanými tabuľkami z freeRADIUSu
 - vytvoriť samostatného SQL užívateľa pre libnss s vlastnými právami (k heslu k SQL má prístup hocijaký shell užívateľ a môže si stiahnuť všetky zahashované heslá - nateraz nastav užívateľom rssh shell)
 - rešpektuj aktívnosť/neaktívnosť užívateľa pre Sambu
+- group quota
+

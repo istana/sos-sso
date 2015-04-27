@@ -84,4 +84,5 @@ While the software is fit for production use, there are some things which needs 
 - do something with currently unused tables from freeRADIUS
 - create separate user and rights for standard libnss (password to SQL is exposed to other shell users - for now you should restrict access to shell, i.e. set rssh for users)
 - respect active/inactive user for Samba
+- group quota
 
