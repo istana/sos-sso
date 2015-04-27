@@ -193,7 +193,7 @@ class User < ActiveRecord::Base
 	private :crypt_salt, :hash_password
 
 	attr_accessor :generate_password
-	validate :generate_password, allow_nil: true, in: ["0", "1", 0, 1, true, false]
+	validates :generate_password, allow_nil: true, inclusion: {in: ["0", "1", 0, 1, true, false]}
 	before_validation :process_generate_password
 	after_save :note_password, :generated_finished
 

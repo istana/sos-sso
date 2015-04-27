@@ -1,4 +1,4 @@
-require 'faker'
+require 'ffaker'
 require 'securerandom'
 
 module ExternalConfigsHelper
@@ -14,7 +14,7 @@ module ExternalConfigsHelper
 		# setup cca 1000 users, 100 groups and 1000 aliases
 		if Group.count < groups
 			groups.times do
-				g = Group.create(name: Faker::Hacker.ingverb + SecureRandom.uuid)
+				g = Group.create(name: FFaker::Lorem.word + SecureRandom.uuid)
 				@group_ids ||= []
 				@group_names ||= []
 				@group_names << g.name
@@ -31,7 +31,7 @@ module ExternalConfigsHelper
 										 foouser = true
 										 "foouser"
 										else
-											Faker::Internet.user_name + SecureRandom.uuid
+											FFaker::Internet.user_name + SecureRandom.uuid
 										end
 				user = User.create(username: username, gid: random_group.id, homedir: '/home/blah')
 

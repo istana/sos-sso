@@ -47,6 +47,6 @@ aaauser:
   password: '$6$salt$m13jYukYZjf4TPI7yE2BV6VrgXyrgPtcfQQ6GYCoSihS6xrFsovQS0x.hykY1XAZqAYHd59asgEW7Zyj82WGQ0'
   ntlm_password: 'DEADBEEF'
   homedir: '/home/aaa'
-  gid: 111111111111111112
+  gid: 1111111112
   shell: '/bin/bash'
   groups: [mail, wifi]

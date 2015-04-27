@@ -20,7 +20,7 @@ class DovecotTest < ActiveSupport::TestCase
 
 	test 'active_mail_gid_not_exists' do
 		# skip validation
-		@foouser.update_attribute(:gid, 99999999999999)
+		@foouser.update_attribute(:gid, 999999999)
 		assert_equal true, @foouser.groups.map(&:name).include?('mail')
 		assert_equal true, @foouser.active
 
