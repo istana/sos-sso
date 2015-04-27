@@ -1,3 +1,27 @@
+require 'yaml'
+c = YAML::load_file(File.expand_path("../../variables.yml", __FILE__))['production']
+
+user = c['user']
+host = c['host']
+
+puts "User: #{user}", "Host: #{host}"
+
+if !user || !host
+  puts 'Set user and host for connection'
+  exit
+end
+
+# Simple Role Syntax
+# ==================
+# Supports bulk-adding hosts to roles, the primary
+# server in each group is considered to be the first
+# unless any hosts have the primary property set.
+# Don't declare `role :all`, it's a meta role
+role :app, "#{user}@#{host}"
+role :web, "#{user}@#{host}"
+role :db,  "#{user}@#{host}"
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
