@@ -1,7 +1,7 @@
 sos-sso
 =======
 
-Web administration system for user accounts suitable for small organizations or schools.
+Web administration system for user accounts suitable for small organizations or schools. Manage users and groups easily.
 
 ## Screenshots ##
 
@@ -32,6 +32,9 @@ Integrates with:
 - *nss-mysql* - provide naming service for *ls*, *who*, *getent* and other utilities. Also *SSH* respects this
 
 ## Installation and configuration ##
+
+While using sos-sso is easy, it takes some effort to install and configure it. Documentation is in the *doc* directory. Please don't be upset with inconsistent or nonexistent documentation and please report it in github issues or send me an email.
+
 
 Here are steps to run this application for skilled users. More detailed howto and complete steps will follow.
 

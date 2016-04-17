@@ -21,3 +21,6 @@
 # ignore vim swap files
 *.sw?
 
+# ignore generated passwords by sos-sso
+/exports/generated_passwords.txt
+
