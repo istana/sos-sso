@@ -12,15 +12,10 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
-# ignore dolphin's config
-/.directory
-
-# ignore vim swap files
-*.sw?
-
-# ignore generated passwords by sos-sso
-/exports/generated_passwords.txt
-
+# Ignore Byebug command history file.
+.byebug_history

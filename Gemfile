@@ -2,102 +2,95 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Use Puma as the app server
+gem 'puma'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.3'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 2.7.1'
-# Use CoffeeScript for .js.coffee assets and views
-#gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer',  platforms: :ruby
-
-gem 'mysql2'
-
-# Samba password
-gem 'smbhash'
-
-# authentication
-gem 'devise'
-
-# authorization
-gem 'cancancan'
-
-# history
-gem 'paper_trail', '~> 4.0.0.beta'
-
-# all three above are for rails_admin
-gem 'rails_admin'
-
-gem 'rails-i18n'
-
-# run programs in CommandLine
-gem 'cocaine'
+gem 'uglifier', '>= 1.3.0'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.1.0'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.2.13'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.1',          group: :doc
+gem 'jbuilder', '~> 2.0'
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'mysql2'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'rails_admin', github: 'sferik/rails_admin'
+## temporary
+gem 'rack-pjax', github: 'afcapel/rack-pjax'
+gem 'remotipart', github: 'mshibuya/remotipart'
+# authentication
+gem 'devise', github: 'plataformatec/devise'
+# authorization
+gem 'cancancan'
+# history
+gem 'paper_trail'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Samba password
+gem 'smbhash'
+gem 'rails-i18n', '5.0.0.beta3'
+# run programs in CommandLine
+gem 'cocaine'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-	gem 'rails-perftest'
-	gem 'ruby-prof'
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+  gem 'rails-perftest', github: 'rails/rails-perftest'
+  gem 'ruby-prof'
+end
 
 group :development do
-	# run when something change
-	gem 'guard'
-	gem 'guard-livereload'
-	gem 'guard-minitest'
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 3.0'
+  gem 'listen', '~> 3.0.5'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 
-	# mocks and stubs
-	gem 'mocha'
+  # run when something change
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-minitest'
 
-	# fake data generator
-	gem 'ffaker', '~> 2.0'
+  # mocks and stubs
+  gem 'mocha'
 
-	# test suite
-	gem 'minitest'
-	gem 'minitest-rails'
-	
-	# output formatter
-	gem 'minitest-reporters'
-	
-	# integration testing
-	gem 'capybara'
-	gem 'minitest-rails-capybara'
-	gem 'poltergeist'
-	gem 'connection_pool'
-	gem 'database_cleaner'
-	
-	gem 'capistrano', '~> 3.4.0', require: false
-	gem 'capistrano-passenger', require: false
-	gem 'capistrano-rails', '~> 1.1.3', require: false
-	gem 'capistrano-bundler', require: false
-	gem 'capistrano-rbenv', '~> 2.0.3', require: false
-	gem 'cape', require: false
-	# noecho password to the ssh key
-	gem 'highline', require: false
-	gem 'capistrano3-unicorn', require: false
+  # fake data generator
+  gem 'ffaker', '~> 2.0'
 
-
+  # test suite
+  gem 'minitest'
+  gem 'minitest-rails', github: 'blowmage/minitest-rails', branch: 'rails5'
+  
+  # output formatter
+  gem 'minitest-reporters'
+  
+  # integration testing
+  gem 'capybara'
+  gem 'minitest-rails-capybara', github: 'blowmage/minitest-rails-capybara', branch: 'rails5'
+  gem 'poltergeist'
+  gem 'connection_pool'
+  gem 'database_cleaner'
+  
+  gem 'capistrano', '~> 3.4.0', require: false
+  gem 'capistrano-passenger', require: false
+  gem 'capistrano-rails', '~> 1.1.3', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rbenv', '~> 2.0.3', require: false
+  gem 'cape', require: false
+  # noecho password to the ssh key
+  gem 'highline', require: false
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

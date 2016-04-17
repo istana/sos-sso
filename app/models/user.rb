@@ -5,15 +5,15 @@ require 'cocaine'
 require 'open3'
 
 class User < ActiveRecord::Base
-	has_many :groups_users, class: GroupsUsers
+	has_many :groups_users, class_name: 'GroupsUsers'
 	has_many :groups, :through => :groups_users, :inverse_of => :users
 	has_many :aliases, :inverse_of => :user, :dependent => :destroy
-	has_many :radius_users, :inverse_of => :user, :class => Radcheck,
+	has_many :radius_users, :inverse_of => :user, :class_name => 'Radcheck',
 		:dependent => :destroy, :foreign_key => :username, :primary_key => :username
-	has_many :radius_auths, :inverse_of => :user, :class => Radpostauth,
+	has_many :radius_auths, :inverse_of => :user, :class_name => 'Radpostauth',
 		:dependent => :destroy, :foreign_key => :username, :primary_key => :username
 
-	belongs_to :primary_group, foreign_key: 'gid', class: Group
+	belongs_to :primary_group, foreign_key: 'gid', class_name: 'Group'
 	validates :primary_group, :presence => true
 
 

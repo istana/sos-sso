@@ -10,7 +10,8 @@ default: &default
   adapter: mysql2
   # use root user only for your local development, not when running it somewhere
   username: root
-  password: Isabelle
+  #password: Isabelle
+  password: toor
   encoding: utf8
   socket: /var/run/mysqld/mysqld.sock
 
