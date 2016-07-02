@@ -14,7 +14,7 @@ class SystemsTasksUsersTest < ActiveSupport::TestCase
 	end
 
 	def teardown
-		FileUtils.rm_rf(@path) if @path && File.exists?(@path)
+		FileUtils.rm_rf(@path) if @path && File.exist?(@path)
 	end
 
 	test 'redundant_homedirs' do

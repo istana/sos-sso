@@ -1,4 +1,4 @@
-class Radpostauth < ActiveRecord::Base
+class Radpostauth < ApplicationRecord
 	self.table_name = "radpostauth"
 
 	belongs_to :user, inverse_of: :radius_users,

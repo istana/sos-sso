@@ -4,7 +4,7 @@ require 'smbhash'
 require 'cocaine'
 require 'open3'
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 	has_many :groups_users, class_name: 'GroupsUsers'
 	has_many :groups, :through => :groups_users, :inverse_of => :users
 	has_many :aliases, :inverse_of => :user, :dependent => :destroy

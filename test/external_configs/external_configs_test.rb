@@ -17,9 +17,9 @@ class ReadConfigTest < MiniTest::Test
 
 	def teardown
 		# TODO change location to test/tmp
-		FileUtils.rm(@testfile) if File.exists?(@testfile)
-		FileUtils.rm(@testfile_complex) if File.exists?(@testfile_complex)
-		FileUtils.rm(@testfile_postfix) if File.exists?(@testfile_postfix)
+		FileUtils.rm(@testfile) if File.exist?(@testfile)
+		FileUtils.rm(@testfile_complex) if File.exist?(@testfile_complex)
+		FileUtils.rm(@testfile_postfix) if File.exist?(@testfile_postfix)
 	end
 
 	def test_read

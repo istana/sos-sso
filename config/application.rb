@@ -26,8 +26,5 @@ module SosSso5
     # for SystemTasks::Users.redundant_homedirs and other
     config.homedirs = "/network/home/"
     config.management_groups = ['vedenie', 'management']
-
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end

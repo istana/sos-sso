@@ -6,7 +6,7 @@ require 'json'
 class FromLdapConvertor
 
 	def initialize(file)
-		if !File.exists?(file)
+		if !File.exist?(file)
 			raise("File #{file} does not exist")
 		else
 			@ldiff = File.read(file)

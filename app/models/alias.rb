@@ -1,4 +1,4 @@
-class Alias < ActiveRecord::Base
+class Alias < ApplicationRecord
 	belongs_to :user, inverse_of: :aliases
 
 	has_paper_trail

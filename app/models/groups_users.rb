@@ -1,6 +1,6 @@
 require 'radius_tasks'
 
-class GroupsUsers < ActiveRecord::Base
+class GroupsUsers < ApplicationRecord
 	belongs_to :user
 	belongs_to :group
 

@@ -1,4 +1,4 @@
-class Radcheck < ActiveRecord::Base
+class Radcheck < ApplicationRecord
 	self.table_name = "radcheck"
 
 	# both foreign_key and primary_key are needed

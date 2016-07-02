@@ -21,7 +21,7 @@ DatabaseCleaner.strategy = :transaction
 DatabaseCleaner.clean_with(:truncation)
 
 class ActiveSupport::TestCase
-	self.use_transactional_fixtures = true
+	self.use_transactional_tests = true
 	ActiveRecord::Migration.check_pending!
 
 

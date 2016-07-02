@@ -17,7 +17,7 @@ module SystemTasks
 
 		def self.missing_homedirs
 			::User.all.reduce([]) do |result, u|
-				if !File.exists?(u.homedir)
+				if !File.exist?(u.homedir)
 					result << [u.username, 'noexist']
 				elsif	!File.directory?(u.homedir)
 					result << [u.username, 'file']
@@ -29,7 +29,7 @@ module SystemTasks
 		# TODO better check
 		def self.homedirs_check_permissions
 			::User.all.reduce({}) do |result, u|
-				if File.exists?(u.homedir)
+				if File.exist?(u.homedir)
 					stat = File.stat(u.homedir)
 					if (stat.uid != u.id)
 						result[u.username] ||= []
