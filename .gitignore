@@ -20,4 +20,5 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-variables.yml
+/config/variables.yml
+/_rsync_cache
