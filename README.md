@@ -53,7 +53,7 @@ Here are steps to run this application for skilled users. More detailed howto an
 
 ## License ##
 
-Copyright 2014 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
+Copyright 2016 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
 
 If you like it please share that *sos-sso* exists.
 
