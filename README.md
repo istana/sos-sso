@@ -53,15 +53,9 @@ Here are steps to run this application for skilled users. More detailed howto an
 
 ## License ##
 
-Copyright 2014 Ivan Stana. The license of *sos-sso* is AGPL for all files with some exceptions:
+Copyright 2014 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
 
-- *external_configs* directory consists mostly of collection of configuration files taken from respective software
-- documentation is under CC0 license, equivalent to public domain
-- *config* directory is also CC0
-- any *CSS*, *JavaScript* and image in *app/assets* is also CC0
-- *sos-sso* uses many components and libraries with its own license
-
-At this point I don't really care about trademark and such stuff. But I want users to know they are using this software and they can inspect and maybe improve it. Also maybe should I relicense this to MIT license.
+If you like it please share that *sos-sso* exists.
 
 ## About/History ##
 
