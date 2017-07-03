@@ -75,7 +75,6 @@ GEM
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
-    cliver (0.3.2)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.2.2)
@@ -86,8 +85,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
-    database_cleaner (1.6.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -143,20 +140,9 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
-    minitest-capybara (0.8.2)
-      capybara (~> 2.2)
-      minitest (~> 5.0)
-      rake
-    minitest-metadata (0.6.0)
-      minitest (>= 4.7, < 6.0)
     minitest-rails (3.0.0)
       minitest (~> 5.8)
       railties (~> 5.0)
-    minitest-rails-capybara (3.0.1)
-      capybara (~> 2.7)
-      minitest-capybara (~> 0.8)
-      minitest-metadata (~> 0.6)
-      minitest-rails (~> 3.0)
     minitest-reporters (1.1.14)
       ansi
       builder
@@ -177,10 +163,6 @@ GEM
     paper_trail (7.0.3)
       activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
-    poltergeist (1.15.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -307,8 +289,6 @@ DEPENDENCIES
   capybara (~> 2.13)
   cocaine
   coffee-rails (~> 4.2)
-  connection_pool
-  database_cleaner
   devise
   ffaker
   highline
@@ -316,12 +296,10 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   minitest
   minitest-rails
-  minitest-rails-capybara
   minitest-reporters
   mocha
   mysql2
   paper_trail
-  poltergeist
   puma (~> 3.7)
   rails (~> 5.1.2)
   rails-i18n
@@ -340,4 +318,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.0
+   1.15.1

@@ -67,13 +67,7 @@ group :development do
   
   # output formatter
   gem 'minitest-reporters'
-  
-  # integration testing
-  gem 'minitest-rails-capybara'
-  gem 'poltergeist'
-  gem 'connection_pool'
-  gem 'database_cleaner'
-  
+
   gem 'capistrano', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', require: false
