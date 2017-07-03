@@ -8,6 +8,7 @@ class PostfixAliasesCommandsTest < ActiveSupport::TestCase
 
 		@fouser = get_users('fouser')
 		@fouser_raw = get_users_raw('fouser')
+		@mail_group = Group.find_by(name: 'mail')
 	end
 
 	# gets user from alias
@@ -36,7 +37,7 @@ class PostfixAliasesCommandsTest < ActiveSupport::TestCase
 	end
 
 	def test_active_alias_noactive_user_nomail
-		User.find_by(username: 'zoouser').groups.delete(name: 'mail')
+		User.find_by(username: 'zoouser').groups.delete(@mail_group)
 
 		assert_equal false, @fouser_raw.to_a.include?(['zoouser'])
 		assert_equal false, @fouser.to_a.include?('zoouser')
@@ -48,7 +49,7 @@ class PostfixAliasesCommandsTest < ActiveSupport::TestCase
 	end
 
 	def test_noactive_alias_active_user_nomail
-		User.find_by(username: 'baruser').groups.delete(name: 'mail')
+		User.find_by(username: 'baruser').groups.delete(@mail_group)
 
 		assert_equal false, @fouser_raw.to_a.include?(['baruser'])
 		assert_equal false, @fouser.to_a.include?('baruser')
@@ -64,7 +65,7 @@ class PostfixAliasesCommandsTest < ActiveSupport::TestCase
 	def test_noactive_alias_noactive_user_nomail
 		bar = User.find_by(username: 'baruser')
 		bar.update(active: false)
-		bar.groups.delete(name: 'mail')
+		bar.groups.delete(@mail_group)
 
 		assert_equal false, @fouser_raw.to_a.include?(['baruser'])
 		assert_equal false, @fouser.to_a.include?('baruser')

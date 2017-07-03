@@ -3,7 +3,8 @@ require "test_helper"
 class RadcheckTest < ActiveSupport::TestCase
 
   def radcheck
-    @radcheck ||= Radcheck.new
+    @user = User.new
+    @radcheck ||= Radcheck.new(user: @user)
   end
 
   def test_valid
