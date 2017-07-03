@@ -33,9 +33,10 @@ gem 'devise'
 gem 'paper_trail'
 # Samba password
 gem 'smbhash'
-gem 'rails-i18n'
 # run programs in CommandLine
 gem 'cocaine'
+gem 'kaminari-i18n'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'rails-perftest'
@@ -45,6 +46,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'm'
 end
 
 group :development do
@@ -67,6 +69,7 @@ group :development do
   
   # output formatter
   gem 'minitest-reporters'
+  gem 'database_cleaner'
 
   gem 'capistrano', require: false
   gem 'capistrano-passenger', require: false

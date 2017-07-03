@@ -11,7 +11,7 @@ default: &default
   # use root user only for your local development, not when running it somewhere
   username: root
   #password: Isabelle
-  password: toor
+  password:
   encoding: utf8
   socket: /var/run/mysqld/mysqld.sock
 

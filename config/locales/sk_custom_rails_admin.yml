@@ -4,3 +4,6 @@ sk:
       maintenance:
         title: 'Údržba'
         menu: 'Údržba'
+    table_headers:
+      last_created: 'Naposledy vytvorené'
+    toggle_navigation: 'Prepnúť zobrazenie'

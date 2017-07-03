@@ -1,0 +1,155 @@
+en:
+  admin:
+    actions:
+      bulk_delete:
+        breadcrumb: Multiple delete
+        bulk_link: Delete selected %{model_label_plural}
+        menu: Multiple delete
+        title: Delete %{model_label_plural}
+      dashboard:
+        breadcrumb: Dashboard
+        menu: Dashboard
+        title: Site Administration
+      delete:
+        breadcrumb: Delete
+        done: deleted
+        link: Delete '%{object_label}'
+        menu: Delete
+        title: Delete %{model_label} '%{object_label}'
+      edit:
+        breadcrumb: Edit
+        done: updated
+        link: Edit this %{model_label}
+        menu: Edit
+        title: Edit %{model_label} '%{object_label}'
+      export:
+        breadcrumb: Export
+        bulk_link: Export selected %{model_label_plural}
+        done: exported
+        link: Export found %{model_label_plural}
+        menu: Export
+        title: Export %{model_label_plural}
+      history_index:
+        breadcrumb: History
+        menu: History
+        title: History for %{model_label_plural}
+      history_show:
+        breadcrumb: History
+        menu: History
+        title: History for %{model_label} '%{object_label}'
+      index:
+        breadcrumb: "%{model_label_plural}"
+        menu: List
+        title: List of %{model_label_plural}
+      new:
+        breadcrumb: New
+        done: created
+        link: Add a new %{model_label}
+        menu: Add new
+        title: New %{model_label}
+      show:
+        breadcrumb: "%{object_label}"
+        menu: Show
+        title: Details for %{model_label} '%{object_label}'
+      show_in_app:
+        menu: Show in app
+    export:
+      click_to_reverse_selection: Click to reverse selection
+      confirmation: Export to %{name}
+      csv:
+        col_sep: Column separator
+        col_sep_help: Leave blank for default ('%{value}')
+        default_col_sep: ","
+        encoding_to: Encode to
+        encoding_to_help: 'Choose output encoding. Leave empty to let current input encoding untouched: (%{name})'
+        header_for_association_methods: "%{name} [%{association}]"
+        header_for_root_methods: "%{name}"
+        skip_header: No header
+        skip_header_help: Do not output a header (no fields description)
+      display: 'Display %{name}: %{type}'
+      empty_value_for_associated_objects: "<empty>"
+      fields_from: Fields from %{name}
+      fields_from_associated: Fields from associated %{name}
+      options_for: Options for %{name}
+      select: Select fields to export
+      select_all_fields: Select All Fields
+    flash:
+      error: "%{name} failed to be %{action}"
+      model_not_found: Model '%{model}' could not be found
+      noaction: No actions were taken
+      object_not_found: "%{model} with id '%{id}' could not be found"
+      successful: "%{name} successfully %{action}"
+    form:
+      all_of_the_following_related_items_will_be_deleted: "? The following related items may be deleted or orphaned:"
+      are_you_sure_you_want_to_delete_the_object: Are you sure you want to delete this %{model_name}
+      basic_info: Basic info
+      bulk_delete: 'The following objects will be deleted, which may delete or orphan some of their related dependencies:'
+      cancel: Cancel
+      char_length_of: length of
+      char_length_up_to: length up to
+      confirmation: Yes, I'm sure
+      new_model: "%{name} (new)"
+      one_char: character
+      optional: Optional
+      required: Required
+      save: Save
+      save_and_add_another: Save and add another
+      save_and_edit: Save and edit
+    home:
+      name: Home
+    js:
+      between_and_: Between ... and ...
+      contains: Contains
+      date: Date ...
+      ends_with: Ends with
+      'false': false
+      is_blank: Is blank
+      is_exactly: Is exactly
+      is_present: Is present
+      last_week: Last week
+      number: Number ...
+      starts_with: Starts with
+      this_week: This week
+      today: Today
+      'true': true
+      yesterday: Yesterday
+    loading: Loading...
+    misc:
+      add_filter: Add filter
+      add_new: Add new
+      ago: ago
+      bulk_menu_title: Selected items
+      chose_all: Choose all
+      chosen: Chosen %{name}
+      clear_all: Clear all
+      down: Down
+      filter: Filter
+      filter_date_format: mm/dd/yy
+      log_out: Log out
+      navigation: Navigation
+      navigation_static_label: Links
+      refresh: Refresh
+      remove: Remove
+      search: Search
+      show_all: Show all
+      up: Up
+    pagination:
+      next: Next &raquo;
+      previous: "&laquo; Prev"
+      truncate: "…"
+    table_headers:
+      changes: Changes
+      created_at: Date/Time
+      item: Item
+      last_used: Last used
+      message: Message
+      model_name: Model name
+      records: Records
+      username: User
+  home:
+    name: Home
+  views:
+    pagination:
+      next: Next &raquo;
+      previous: "&laquo; Prev"
+      truncate: "…"

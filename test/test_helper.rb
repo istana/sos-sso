@@ -4,9 +4,6 @@ require "rails/test_help"
 require "minitest/rails"
 require 'database_cleaner'
 
-require 'capybara'
-require 'capybara/rails'
-
 require 'minitest/reporters'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 

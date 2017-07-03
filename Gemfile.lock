@@ -85,6 +85,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    database_cleaner (1.6.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -125,12 +126,18 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    kaminari-i18n (0.4.0)
+      kaminari
+      rails
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    m (1.5.1)
+      method_source (>= 0.6.7)
+      rake (>= 0.9.2.2)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     metaclass (0.0.4)
@@ -289,11 +296,14 @@ DEPENDENCIES
   capybara (~> 2.13)
   cocaine
   coffee-rails (~> 4.2)
+  database_cleaner
   devise
   ffaker
   highline
   jbuilder (~> 2.5)
+  kaminari-i18n
   listen (>= 3.0.5, < 3.2)
+  m
   minitest
   minitest-rails
   minitest-reporters
