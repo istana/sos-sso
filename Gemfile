@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -44,7 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'm'
   gem 'pry'
@@ -57,21 +57,16 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
   # mocks and stubs
   gem 'mocha'
-
   # fake data generator
   gem 'ffaker'
-
   # test suite
   gem 'minitest'
-  gem 'minitest-rails'#, github: 'blowmage/minitest-rails', branch: 'rails5'
-  
+  gem 'minitest-rails'
   # output formatter
   gem 'minitest-reporters'
   gem 'database_cleaner'
-
   gem 'capistrano', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', require: false
