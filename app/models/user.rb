@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id            :bigint(8)        not null, primary key
+#  username      :string(255)      not null
+#  gid           :bigint(8)        not null
+#  gecos         :string(255)      default(""), not null
+#  homedir       :string(255)      not null
+#  shell         :string(255)      default("/usr/bin/rssh"), not null
+#  password      :string(255)      default("x"), not null
+#  lstchg        :bigint(8)        default(1), not null
+#  min           :bigint(8)        default(0), not null
+#  max           :bigint(8)        default(9999), not null
+#  warn          :bigint(8)        default(30), not null
+#  inact         :bigint(8)        default(0), not null
+#  expire        :bigint(8)        default(-1), not null
+#  flag          :integer          default(0), not null
+#  quota_mass    :bigint(8)        default(52428800), not null
+#  quota_inodes  :bigint(8)        default(15000), not null
+#  active        :boolean          default(TRUE), not null
+#  created_at    :datetime
+#  updated_at    :datetime
+#  ntlm_password :string(255)
+#
+
 require 'digest'
 require 'securerandom'
 require 'smbhash'

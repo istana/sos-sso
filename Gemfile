@@ -75,6 +75,7 @@ group :development do
   gem 'cape', require: false
   # noecho password to the ssh key
   gem 'highline', require: false
+  gem 'annotate', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: groups_users
+#
+#  group_id :integer          not null
+#  user_id  :integer          not null
+#
+
 require 'radius_tasks'
 
 class GroupsUsers < ApplicationRecord
