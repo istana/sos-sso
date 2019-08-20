@@ -1,5 +1,5 @@
 [![Build Status](http://img.shields.io/travis/istana/sos-sso.svg?style=flat-square)](https://travis-ci.org/istana/sos-sso)
-[![License](https://img.shields.io/github/license/istana/sos-sso)
+[![License]](https://img.shields.io/github/license/istana/sos-sso)
 
 # sos-sso
 
