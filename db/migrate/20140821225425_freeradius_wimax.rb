@@ -1,6 +1,6 @@
 # who is using WiMAX in real life?
 
-class FreeradiusWimax < ActiveRecord::Migration
+class FreeradiusWimax < ActiveRecord::Migration[4.2]
   def change
 		create_table :wimax do |t|
 			t.string :username, null: false, default: ''

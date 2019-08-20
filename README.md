@@ -53,7 +53,7 @@ Here are steps to run this application for skilled users. More detailed howto an
 
 ## License ##
 
-Copyright 2016 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
+Copyright 2016-2019 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
 
 If you like it please share that *sos-sso* exists.
 
@@ -69,6 +69,7 @@ Of course I didn't found such piece of software I wanted. Tutorials for Dovecot-
 
 While the software is fit for production use, there are some things which needs improvement:
 
+- crypt test in user model fails on MacOS
 - authorization for users connected via freeRADIUS. Requires communication with wifi access points (ssh+iptables)
 - pair RADIUS users, DHCP requests and MAC addresses to track their devices use/abuse
 - more automated tests

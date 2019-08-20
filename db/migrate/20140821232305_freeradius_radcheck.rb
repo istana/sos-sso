@@ -1,4 +1,4 @@
-class FreeradiusRadcheck < ActiveRecord::Migration
+class FreeradiusRadcheck < ActiveRecord::Migration[4.2]
   def change
 		create_table :radcheck do |t|
 			t.string :username, null: false, default: ''

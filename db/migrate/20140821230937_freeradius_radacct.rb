@@ -1,4 +1,4 @@
-class FreeradiusRadacct < ActiveRecord::Migration
+class FreeradiusRadacct < ActiveRecord::Migration[4.2]
   def change
 		create_table :radacct, id: false do |t|
 			t.integer :radacctid, limit: 8, null: false

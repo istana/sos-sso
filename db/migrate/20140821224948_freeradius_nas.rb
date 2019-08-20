@@ -1,4 +1,4 @@
-class FreeradiusNas < ActiveRecord::Migration
+class FreeradiusNas < ActiveRecord::Migration[4.2]
   def change
 		create_table :nas do |t|
 			t.string :nasname, null: false

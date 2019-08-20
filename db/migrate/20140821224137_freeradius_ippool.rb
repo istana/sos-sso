@@ -1,4 +1,4 @@
-class FreeradiusIppool < ActiveRecord::Migration
+class FreeradiusIppool < ActiveRecord::Migration[4.2]
   def change
 		create_table(:radippool) do |t|
 			t.string :pool_name, null: false

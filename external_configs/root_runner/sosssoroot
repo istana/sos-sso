@@ -10,11 +10,11 @@
 # (rm -rf /network/home instead of rm -rf /network/home/alice)
 
 require 'optparse'
-require 'cocaine'
+require 'terrapin'
 require 'active_support/core_ext/object/blank.rb'
 require 'open3'
 
-# TODO catch Cocaine::ExitStatus error
+# TODO catch Terrapin::ExitStatus error
 
 # script only allows to work in $home_base directory
 # because of security. Attacker could set home to "/"
@@ -135,14 +135,14 @@ end
 
 ## lower level functions
 def chmod_homedir(username, groupname, directory)
-	puts Cocaine::CommandLine.new("chmod", "2711 -R :directory").run(
+	puts Terrapin::CommandLine.new("chmod", "2711 -R :directory").run(
 													:username => username,
 													:groupname => groupname,
 													:directory => directory)
 end
 
 def chown_homedir(username, groupname, directory)
-	puts Cocaine::CommandLine.new("chown", "-R :username::groupname :directory").run(
+	puts Terrapin::CommandLine.new("chown", "-R :username::groupname :directory").run(
 													:username => username,
 													:groupname => groupname,
 													:directory => directory)
@@ -168,7 +168,7 @@ end
 # list Samba users
 if $options[:action] == "sambalist"
 	# pdbedit -L -w
-	puts Cocaine::CommandLine.new("pdbedit", "--list --smbpasswd-style").run
+	puts Terrapin::CommandLine.new("pdbedit", "--list --smbpasswd-style").run
 	exit
 
 # add user with password or update password for a user
@@ -184,9 +184,9 @@ elsif $options[:action] == "sambaa"
 
 	# pdbedit -t -a -u :user
 	# smbpasswd is not user, because it could sync password in unix account
-	# cocaine cannot run
+	# Terrapin cannot run
 	# echo -e 'heslo\nheslo' | pdbedit --password-from-stdin --create --user 'sir'
-	c = Cocaine::CommandLine.new("pdbedit", "--password-from-stdin --create --user :user"
+	c = Terrapin::CommandLine.new("pdbedit", "--password-from-stdin --create --user :user"
 													).command(:user => $options[:user])
 
 	Open3.popen3(c) do |stdin, stdout, stderr, t|
@@ -205,7 +205,7 @@ elsif $options[:action] == "sambaa"
 # remove user from Samba
 elsif $options[:action] == "sambax"
 	require_params($options, :user)
-	puts Cocaine::CommandLine.new("pdbedit", "--delete --user :user"
+	puts Terrapin::CommandLine.new("pdbedit", "--delete --user :user"
 													).run(:user => $options[:user])
 	exit
 
@@ -222,8 +222,8 @@ elsif $options[:action] == "create_home"
 		exit(1)
 	end
 
-	puts Cocaine::CommandLine.new("mkdir", "-p :directory").run(:directory => infer_homedir(username))
-	puts Cocaine::CommandLine.new("cp", "-a /etc/skel/. :directory").run(:directory => infer_homedir(username))
+	puts Terrapin::CommandLine.new("mkdir", "-p :directory").run(:directory => infer_homedir(username))
+	puts Terrapin::CommandLine.new("cp", "-a /etc/skel/. :directory").run(:directory => infer_homedir(username))
 	fix_homedir(username, groupname)
 
 	exit
@@ -248,13 +248,13 @@ elsif $options[:action] == "fix_home"
 elsif $options[:action] == "archive_home"
 	require_params($options, :user)
 
-	puts Cocaine::CommandLine.new("tar", "-cJf /network/deleted_users/:user.tar.xz :directory"
+	puts Terrapin::CommandLine.new("tar", "-cJf /network/deleted_users/:user.tar.xz :directory"
 															 ).run(
 																 :user => $options[:user],
 																 :directory => infer_homedir($options[:user])
 															 )
 
-	puts Cocaine::CommandLine.new("rm", "-rf /network/home/:user"
+	puts Terrapin::CommandLine.new("rm", "-rf /network/home/:user"
 															 ).run(
 																 :user => $options[:user]
 															 )
@@ -263,7 +263,7 @@ elsif $options[:action] == "archive_home"
 elsif $options[:action] == "get_user_quota"
 	require_params($options, :user)
 
-	puts Cocaine::CommandLine.new("quota", "--verbose --user :user"
+	puts Terrapin::CommandLine.new("quota", "--verbose --user :user"
 													).run(:user => $options[:user])
 	exit
 
@@ -280,10 +280,10 @@ elsif $options[:action] == "set_user_quota"
 	# set grace time to one week. This is global option and must be set before quota for a user,
 	# otherwise grace time will be none (only hardquota will be enforced, which is too late)
 	# on the other hand users without mail should have soft quota == hard quota, because warn mail won't reach them
-	puts Cocaine::CommandLine.new("setquota", "--user --edit-period 604800 604800 --all").run
+	puts Terrapin::CommandLine.new("setquota", "--user --edit-period 604800 604800 --all").run
 
 	# setquota -a -u :user x x x x
-	puts Cocaine::CommandLine.new("setquota", "--user :user :bs :bh :is :ih --all").run(
+	puts Terrapin::CommandLine.new("setquota", "--user :user :bs :bh :is :ih --all").run(
 		:user => $options[:user],
 		:bs => $options[:blocksoft].to_s,
 		:bh => $options[:blockhard].to_s,
@@ -295,7 +295,7 @@ elsif $options[:action] == "set_user_quota"
 elsif $options[:action] == "remove_quota"
 	require_params($options, :user)
 
-	puts Cocaine::CommandLine.new("setquota", "--user :user 0 0 0 0 --all").run(
+	puts Terrapin::CommandLine.new("setquota", "--user :user 0 0 0 0 --all").run(
 		:user => $options[:user]
 	)
 

@@ -1,4 +1,4 @@
-class FreeradiusRadgroupcheck < ActiveRecord::Migration
+class FreeradiusRadgroupcheck < ActiveRecord::Migration[4.2]
   def change
 		create_table :radgroupcheck do |t|
 			t.string :groupname, null: false, default: ''

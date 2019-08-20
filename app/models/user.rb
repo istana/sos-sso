@@ -27,8 +27,9 @@
 require 'digest'
 require 'securerandom'
 require 'smbhash'
-require 'cocaine'
+require 'terrapin'
 require 'open3'
+require 'string/crypt'
 
 class User < ApplicationRecord
 	has_many :groups_users, class_name: 'GroupsUsers'
@@ -63,7 +64,7 @@ class User < ApplicationRecord
 
 	# BEGIN USERNAME
 
-	validates :username, :uniqueness => true, :presence => true, :format => /\A\w+[\w-]*\w+\z/
+	validates :username, :uniqueness => { :case_sensitive => true }, :presence => true, :format => /\A\w+[\w-]*\w+\z/
 	before_validation :generate_save_username
 
 	def generate_save_username
@@ -287,7 +288,7 @@ class User < ApplicationRecord
 	def sync_quota
 		# set soft quota less than hard to people belonging to mail group
 		# TODO: when user is added to mail group, is him updated also or only link table?
-		Cocaine::CommandLine.new("sudo sosssoroot", "--set-user-quota :bs,:bh,:is,:ih --user :user", :expected_outcodes => [0, 1]).run(
+		Terrapin::CommandLine.new("sudo sosssoroot", "--set-user-quota :bs,:bh,:is,:ih --user :user", :expected_outcodes => [0, 1]).run(
 			:user => self.username,
 			:bs => self.groups.map(&:name).include?("mail") ? (self.quota_mass * 0.8).to_i.to_s : self.quota_mass.to_s,
 			:bh => self.quota_mass.to_s,
@@ -297,7 +298,7 @@ class User < ApplicationRecord
 	end
 
 	def delete_quota
-		Cocaine::CommandLine.new("sudo sosssoroot", "--remove-quota --user :user", :expected_outcodes => [0, 1]).run(:user => self.username)
+		Terrapin::CommandLine.new("sudo sosssoroot", "--remove-quota --user :user", :expected_outcodes => [0, 1]).run(:user => self.username)
 	end
 
 	# END QUOTA
@@ -312,7 +313,7 @@ class User < ApplicationRecord
 
 	def sync_samba
 		if !self.password_cleartext.blank?
-			c = Cocaine::CommandLine.new("sudo sosssoroot", "--sambaa --user :user").command(:user => self.username)
+			c = Terrapin::CommandLine.new("sudo sosssoroot", "--sambaa --user :user").command(:user => self.username)
 
 			Open3.popen3(c) do |stdin, stdout, stderr, t|
 				stdin.puts "#{password_cleartext}\n#{password_cleartext}"
@@ -328,7 +329,7 @@ class User < ApplicationRecord
 	end
 
 	def delete_samba
-		Cocaine::CommandLine.new("sudo sosssoroot", "--sambax --user :user", :expected_outcodes => [0, 1]).run(:user => self.username)
+		Terrapin::CommandLine.new("sudo sosssoroot", "--sambax --user :user", :expected_outcodes => [0, 1]).run(:user => self.username)
 	end
 
 	# END Samba
@@ -348,14 +349,14 @@ class User < ApplicationRecord
 		:if => Proc.new { Rails.application.config.homedir == true }
 
 	def create_homedir
-		Cocaine::CommandLine.new("sudo sosssoroot", "--create-home --user :user --group :group").run(
+		Terrapin::CommandLine.new("sudo sosssoroot", "--create-home --user :user --group :group").run(
 			:user => self.username,
 			:group => self.primary_group.name
 		)
 	end
 
 	def archive_homedir
-		Cocaine::CommandLine.new("sudo sosssoroot", "--archive-home --user :user").run(
+		Terrapin::CommandLine.new("sudo sosssoroot", "--archive-home --user :user").run(
 			:user => self.username
 		)
 	end

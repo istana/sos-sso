@@ -57,7 +57,7 @@ module SystemTasks
 
 		# use pdbedit -L to list users (as root)
 		def self.redundant_missing_samba_users
-			samba_users = Cocaine::CommandLine.new("sudo sosssoroot", "--sambalist").run
+			samba_users = Terrapin::CommandLine.new("sudo sosssoroot", "--sambalist").run
 			samba_users = samba_users.split("\n").select{|i| !i.blank?}.map{|l| l.split(":").first}
 			users = ::User.all.map(&:username)
 

@@ -1,4 +1,4 @@
-class FreeradiusRadreply < ActiveRecord::Migration
+class FreeradiusRadreply < ActiveRecord::Migration[4.2]
   def change
 		create_table :radreply do |t|
 			t.string :username, null: false, default: ''

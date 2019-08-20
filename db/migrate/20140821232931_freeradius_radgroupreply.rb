@@ -1,4 +1,4 @@
-class FreeradiusRadgroupreply < ActiveRecord::Migration
+class FreeradiusRadgroupreply < ActiveRecord::Migration[4.2]
   def change
 		create_table :radgroupreply do |t|
 			t.string :groupname, null: false, default: ''

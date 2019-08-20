@@ -1,4 +1,4 @@
-class FreeradiusCui < ActiveRecord::Migration
+class FreeradiusCui < ActiveRecord::Migration[4.2]
   def change
 		create_table :cui, id: false do |t|
 			t.string :clientipaddress, null: false, default: ''
