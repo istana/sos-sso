@@ -1,15 +1,9 @@
-sos-sso
-=======
+[![Build Status](http://img.shields.io/travis/istana/sos-sso.svg?style=flat-square)](https://travis-ci.org/istana/sos-sso)
+[![License](https://img.shields.io/github/license/istana/sos-sso)
+
+# sos-sso
 
 Web administration system for user accounts suitable for small organizations or schools. Manage users and groups easily.
-
-## Screenshots ##
-
-Screenshots are the best and most useful!
-
-![Welcome page](http://myrtana.sk/sos-sso/welcome-page.jpg)
-![Add a user](http://myrtana.sk/sos-sso/add-user.jpg)
-![RADIUS auths](http://myrtana.sk/sos-sso/radpostauth.jpg)
 
 ## Introduction ##
 
@@ -20,6 +14,7 @@ Features:
 - implements *passwd*, *group* and *shadow* structures
 - easy use only via web interface
 - integrity and consistency checks for the best health of our system
+- UI via rails_admin gem
 
 Integrates with:
 
@@ -53,7 +48,7 @@ Here are steps to run this application for skilled users. More detailed howto an
 
 ## License ##
 
-Copyright 2016-2019 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
+Copyright 2014-2019 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
 
 If you like it please share that *sos-sso* exists.
 
