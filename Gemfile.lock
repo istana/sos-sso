@@ -269,7 +269,6 @@ GEM
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    string-crypt (0.9.0)
     temple (0.8.1)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
@@ -333,11 +332,13 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
-  string-crypt
   terrapin
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
+
+RUBY VERSION
+   ruby 2.6.3p62
 
 BUNDLED WITH
    2.0.2

@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# https://github.com/jeremyevans/ruby-string-crypt/pull/1
+# works in <=2.6, but will be deprecated at any time
+ruby '~> 2.6'
+#gem 'string-crypt'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
@@ -28,7 +33,6 @@ gem 'paper_trail'
 gem 'paper_trail-association_tracking'
 # Samba password
 gem 'smbhash'
-gem 'string-crypt'
 # run programs in CommandLine
 gem 'terrapin'
 gem 'kaminari-i18n'
