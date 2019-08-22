@@ -99,6 +99,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     ffaker (2.11.0)
     ffi (1.11.1)
@@ -307,6 +311,7 @@ DEPENDENCIES
   capistrano-rbenv
   database_cleaner
   devise
+  dotenv-rails
   ffaker
   highline
   jbuilder (~> 2.7)

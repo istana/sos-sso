@@ -38,6 +38,8 @@ gem 'terrapin'
 gem 'kaminari-i18n'
 gem 'rails-i18n'
 
+gem 'dotenv-rails'
+
 group :development, :test do
   gem 'rails-perftest'
   gem 'ruby-prof'
