@@ -11,11 +11,10 @@ before_install:
   - gem update --system
   - gem install bundle
 script:
-  — bundle install — jobs=3 — retry=3
-  - bin/rails db:environment:set RAILS_ENV=test
-  - bin/rails db:create
-  - bin/rails db:migrate RAILS_ENV=test
-  — bundle exec rspec
+  - 'bin/rails db:environment:set RAILS_ENV=test'
+  - 'bin/rails db:create RAILS_ENV=test'
+  - 'bin/rails db:migrate RAILS_ENV=test'
+  — 'bundle exec rspec'
 cache: bundler
 matrix:
   fast_finish: true
