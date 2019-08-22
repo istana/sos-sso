@@ -29,7 +29,7 @@ require 'securerandom'
 require 'smbhash'
 require 'terrapin'
 require 'open3'
-require 'string/crypt'
+#require 'string/crypt'
 
 class User < ApplicationRecord
 	has_many :groups_users, class_name: 'GroupsUsers'
