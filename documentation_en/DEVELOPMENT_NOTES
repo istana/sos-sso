@@ -1,9 +1,0 @@
-TODO set inverse relations in Rails and rails_admin 
-- group quota
-
-- sambax - while deleting lots of users, missing and redundant users are
-not reliable, redundant may be empty and in missing will be some valid users
-
-+  config.relative_url_root = "/sos-sso"
-+  config.action_controller.relative_url_root = "/sos-sso"
-
