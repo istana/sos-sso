@@ -8,6 +8,8 @@ ruby '>= 2.5', '< 2.8' if RUBY_ENGINE == 'ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3.3'
+
+gem 'sprockets', '3.7.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
