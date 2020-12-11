@@ -3,7 +3,7 @@
 
 # sos-sso
 
-Web administration system for user accounts suitable for small organizations or schools. Manage users and groups easily.
+Web-based administration system for user accounts suitable for small organizations or schools. Manage users, groups and email aliases easily.
 
 ## Introduction ##
 
@@ -48,34 +48,14 @@ Here are steps to run this application for skilled users. More detailed howto an
 
 ## License ##
 
-Copyright 2014-2019 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
+Copyright 2014-2020 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
 
 If you like it please share that *sos-sso* exists.
 
-## About/History ##
+## History ##
 
-I've started this project, because I wanted something for managing teachers and students in a high school. Teachers should have mail account, some of them mail aliases. Students should have only access to their authenticated windows share on the server. And some of the teachers and students should have access to the network via RADIUS authentication.
+I've started this project, because I needed something for managing teachers and students in high school. Teachers should have mail account, some of them email aliases. Students should have only access to their authenticated windows share on the server. And some of the teachers and students should have access to the network via RADIUS authentication.
 
 Of course I didn't found such piece of software I wanted. Tutorials for Dovecot-mysql and libnss-mysql were rather sketchy and didn't really modified SQL queries or SQL tables or columns. But I wanted to use the same data for more services, so I began to change the SQL queries. I've written automated tests to test if they are correct and because I modified the SQL schema and queries many (tens) times, it was a good idea. Testing it manually would take insane amount of time and deter me from finishing this. And later other things followed. I've finished this in six weeks, but there were more (failed) generations before this, so original idea is maybe two years old.
 
 *sos-sso* is a shortname for *stredná odborná škola - single sign on*, in translation something like *specialized high school - single sign on*
-
-## TODO and roadmap ##
-
-While the software is fit for production use, there are some things which needs improvement:
-
-- crypt test in user model fails on MacOS
-- authorization for users connected via freeRADIUS. Requires communication with wifi access points (ssh+iptables)
-- pair RADIUS users, DHCP requests and MAC addresses to track their devices use/abuse
-- more automated tests
-- better handling of non-ideal states like changing uid or username should chown and chmod his home directory, quota (uses username), samba (also uses username), ...
-- resolve many less important TODOs
-- some strings are hard coded in Slovak language
-- mail and wifi groups are hardcoded
-- use management group from config (username generation from fullname)
-- somehow test sosssoroot and system integration automatically (QEMU)
-- do something with currently unused tables from freeRADIUS
-- create separate user and rights for standard libnss (password to SQL is exposed to other shell users - for now you should restrict access to shell, i.e. set rssh for users)
-- respect active/inactive user for Samba
-- group quota
-
