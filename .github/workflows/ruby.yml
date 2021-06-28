@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest      
     steps:
       - name: Start MariaDB
-      - uses: getong/mariadb-action@v1.1
+        uses: getong/mariadb-action@v1.1
         with:
           character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
           collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
