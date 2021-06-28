@@ -12,7 +12,9 @@
 class Radpostauth < ApplicationRecord
 	self.table_name = "radpostauth"
 
-	belongs_to :user, inverse_of: :radius_users,
-		:foreign_key => :username, :primary_key => :username
+# Rails incorrectly loads assoc via Radpostauth.all.includes(:user) when username here has different capitalization
+# but Radpostauth.where(username: 'Cat') correctly searches for 'cat' and 'Cat'
+#	belongs_to :user, inverse_of: :radius_auths,
+#   :foreign_key => :username, :primary_key => :username
 end
 

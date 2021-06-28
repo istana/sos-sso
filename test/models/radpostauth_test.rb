@@ -14,8 +14,9 @@ require "test_helper"
 class RadpostauthTest < ActiveSupport::TestCase
 
   def radpostauth
-    @user = User.new
-    @radpostauth ||= Radpostauth.new(user: @user)
+#    @user = User.new
+#    @radpostauth ||= Radpostauth.new(user: @user)
+    @radpostauth = Radpostauth.new
   end
 
   def test_valid
