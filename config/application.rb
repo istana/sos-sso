@@ -35,6 +35,7 @@ module SosSso6
     config.i18n.default_locale = :sk
 
     config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
 
     # base directory for homes
     # for SystemTasks::Users.redundant_homedirs and other

@@ -1,7 +1,6 @@
-ENV["RAILS_ENV"] = "test"
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] = 'test'
+require_relative "../config/environment"
 require "rails/test_help"
-require "minitest/rails"
 require 'database_cleaner'
 
 require 'minitest/reporters'
@@ -20,7 +19,6 @@ DatabaseCleaner.clean_with(:truncation)
 class ActiveSupport::TestCase
 	self.use_transactional_tests = true
 	ActiveRecord::Migration.check_pending!
-
 
 	def setup
 		DatabaseCleaner.start
