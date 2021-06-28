@@ -2,8 +2,8 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_08_20_145141) do
 
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
-  create_table "aliases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "aliases", charset: "utf8", force: :cascade do |t|
     t.boolean "active", default: true, null: false
     t.string "name", null: false
     t.integer "user_id", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["active"], name: "index_aliases_on_active"
   end
 
-  create_table "cui", primary_key: ["username", "clientipaddress", "callingstationid"], options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "cui", primary_key: ["username", "clientipaddress", "callingstationid"], charset: "utf8", force: :cascade do |t|
     t.string "clientipaddress", default: "", null: false
     t.string "callingstationid", default: "", null: false
     t.string "username", default: "", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.datetime "lastaccounting", null: false
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "groups", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "password", default: "x", null: false
     t.datetime "created_at"
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["name"], name: "unqname", unique: true
   end
 
-  create_table "groups_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "groups_users", id: false, charset: "utf8", force: :cascade do |t|
     t.integer "group_id", null: false
     t.integer "user_id", null: false
     t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id"
   end
 
-  create_table "nas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "nas", charset: "utf8", force: :cascade do |t|
     t.string "nasname", null: false
     t.string "shortname"
     t.string "xtype", default: "other"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["nasname"], name: "nasname"
   end
 
-  create_table "radacct", primary_key: "radacctid", id: :bigint, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radacct", primary_key: "radacctid", id: :bigint, default: nil, charset: "utf8", force: :cascade do |t|
     t.string "acctsessionid", default: "", null: false
     t.string "acctuniqueid", default: "", null: false
     t.string "username", default: "", null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["username"], name: "username"
   end
 
-  create_table "radcheck", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radcheck", charset: "utf8", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "attr", default: "", null: false
     t.string "op", limit: 2, default: "==", null: false
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["username"], name: "username", length: 32
   end
 
-  create_table "radgroupcheck", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radgroupcheck", charset: "utf8", force: :cascade do |t|
     t.string "groupname", default: "", null: false
     t.string "attr", default: "", null: false
     t.string "op", limit: 2, default: "==", null: false
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["groupname"], name: "groupname", length: 32
   end
 
-  create_table "radgroupreply", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radgroupreply", charset: "utf8", force: :cascade do |t|
     t.string "groupname", default: "", null: false
     t.string "attr", default: "", null: false
     t.string "op", limit: 2, default: "==", null: false
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["groupname"], name: "groupname", length: 32
   end
 
-  create_table "radippool", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radippool", charset: "utf8", force: :cascade do |t|
     t.string "pool_name", null: false
     t.string "framedipaddress", default: "", null: false
     t.string "nasipaddress", default: "", null: false
@@ -144,14 +144,14 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["pool_name", "expiry_time"], name: "radippool_poolname_expire"
   end
 
-  create_table "radpostauth", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radpostauth", charset: "utf8", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "pass", default: "", null: false
     t.string "reply", default: "", null: false
     t.datetime "authdate", null: false
   end
 
-  create_table "radreply", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radreply", charset: "utf8", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "attr", default: "", null: false
     t.string "op", limit: 2, default: "==", null: false
@@ -159,14 +159,14 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["username"], name: "username", length: 32
   end
 
-  create_table "radusergroup", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "radusergroup", id: false, charset: "utf8", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "groupname", default: "", null: false
     t.integer "priority", default: 1, null: false
     t.index ["username"], name: "username", length: 32
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "username", null: false
     t.bigint "gid", null: false
     t.string "gecos", default: "", null: false
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["username"], name: "unqusername", unique: true
   end
 
-  create_table "version_associations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "version_associations", charset: "utf8", force: :cascade do |t|
     t.integer "version_id"
     t.string "foreign_key_name", null: false
     t.integer "foreign_key_id"
@@ -199,7 +199,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["version_id"], name: "index_version_associations_on_version_id"
   end
 
-  create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "versions", charset: "utf8", force: :cascade do |t|
     t.string "item_type", null: false
     t.integer "item_id", null: false
     t.string "event", null: false
@@ -212,7 +212,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_145141) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id"
   end
 
-  create_table "wimax", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "wimax", charset: "utf8", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.datetime "authdate", null: false
     t.string "spi", default: "", null: false
