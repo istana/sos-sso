@@ -243,7 +243,7 @@ class User < ApplicationRecord
 			us << "Group: #{self.primary_group.name}\n"
 			us << "Change: #{self.updated_at}\n\n"
 
-			File.write(File.join(Rails.root, "exports", "generated_passwords.txt"), us, { :mode => "a" })
+			File.write(File.join(Rails.root, "exports", "generated_passwords.txt"), us, mode: "a")
 		end
 	end
 

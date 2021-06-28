@@ -10,7 +10,7 @@
 #  updated_at :datetime
 #
 
-require 'test_helper'
+require "test_helper"
 
 class AliasTest < ActiveSupport::TestCase
   # test "the truth" do

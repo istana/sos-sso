@@ -1,5 +1,4 @@
 require "test_helper"
-require "external_configs"
 
 # this class tests if SQL commands are ok
 class PostfixAliasesCommandsTest < ActiveSupport::TestCase

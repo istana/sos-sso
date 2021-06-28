@@ -1,5 +1,4 @@
 require "test_helper"
-require "system_tasks"
 
 class SystemsTasksUsersTest < ActiveSupport::TestCase
 

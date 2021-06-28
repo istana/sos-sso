@@ -1,6 +1,5 @@
 require 'test_helper'
 require 'rails/performance_test_help'
-require 'external_configs'
 require 'external_configs_benchmark_helper'
 
 class LibnssMysqlTest

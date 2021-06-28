@@ -1,5 +1,4 @@
 require "test_helper"
-require "password_generator"
 
 # TODO: extend tests
 class PasswordGeneratorTest < ActiveSupport::TestCase

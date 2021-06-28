@@ -1,5 +1,4 @@
 require "test_helper"
-require "radius_tasks"
 
 class RadiusTasksTest < ActiveSupport::TestCase
 	test 'synchronize_accounts' do

@@ -1,5 +1,4 @@
 require "test_helper"
-require "external_configs"
 
 class ReadExternalFilesTest < MiniTest::Test
 	def setup

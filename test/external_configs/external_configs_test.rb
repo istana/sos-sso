@@ -1,6 +1,4 @@
 require "test_helper"
-require "external_configs"
-
 require 'fileutils'
 
 class ReadConfigTest < MiniTest::Test
