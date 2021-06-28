@@ -1,4 +1,3 @@
-[![Build Status](http://img.shields.io/travis/istana/sos-sso.svg?style=flat-square)](https://travis-ci.org/istana/sos-sso)
 [![GitHub license](https://img.shields.io/github/license/istana/sos-sso)](https://github.com/istana/sos-sso/blob/master/LICENSE)
 
 # sos-sso
@@ -30,7 +29,6 @@ Integrates with:
 
 While using sos-sso is easy, it takes some effort to install and configure it. Documentation is in the *doc* directory. Please don't be upset with inconsistent or nonexistent documentation and please report it in github issues or send me an email.
 
-
 Here are steps to run this application for skilled users. More detailed howto and complete steps will follow.
 
 - do not run this under root user
@@ -48,7 +46,7 @@ Here are steps to run this application for skilled users. More detailed howto an
 
 ## License ##
 
-Copyright 2014-2020 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
+Copyright 2014-2021 Ivan Stana. The license of *sos-sso* is MIT. Note that *sos-sso* uses many components and libraries with their own licenses.
 
 If you like it please share that *sos-sso* exists.
 
