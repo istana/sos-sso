@@ -30,4 +30,5 @@ jobs:
         run: |
           bin/rails db:create
           bin/rails db:schema:load
+          bin/rails zeitwerk:check
           bin/rails test
