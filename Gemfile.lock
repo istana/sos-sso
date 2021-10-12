@@ -187,7 +187,7 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (5.4.0)
+    puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -321,7 +321,7 @@ DEPENDENCIES
   paper_trail (~> 11.0)
   paper_trail-association_tracking
   pry
-  puma (~> 5.0)
+  puma (~> 5.5)
   rails (~> 6.1)
   rails-i18n
   rails-perftest
