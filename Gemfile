@@ -4,33 +4,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # https://github.com/jeremyevans/ruby-string-crypt/pull/1
 # works in <=2.7, but will be deprecated at any time
 ruby '>= 2.5', '< 2.8' if RUBY_ENGINE == 'ruby'
-#gem 'string-crypt'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1'
-
-#gem 'sprockets', '3.7.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 5.5'
-# Use SCSS for stylesheets
-#gem 'sass-rails', '~> 6.0'
-# Use Uglifier as compressor for JavaScript assets
-
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
-
-# Reduces boot times through caching; required in config/boot.rb
-#gem 'bootsnap', '>= 1.4.2', require: false
-
 gem 'mysql2'
 gem 'rails_admin'
 # authentication
 gem 'devise'
-# history
 # https://stackoverflow.com/questions/66914608/undefined-method-scope-for-papertrailversionconcernmodule-nomethoderror
 gem 'paper_trail', '~> 11.0'
 gem 'paper_trail-association_tracking'
@@ -40,7 +22,6 @@ gem 'smbhash'
 gem 'terrapin'
 gem 'kaminari-i18n'
 gem 'rails-i18n'
-
 gem 'dotenv-rails'
 
 group :development, :test do
@@ -53,14 +34,11 @@ group :development, :test do
 end
 
 group :development do
+  # Use Puma as the app server
+  gem 'puma', '~> 5.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  #gem 'spring'
-  #gem 'spring-watcher-listen'
-  # mocks and stubs
-  gem 'mocha'
   # fake data generator
   gem 'ffaker'
   # test suite
