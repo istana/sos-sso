@@ -10,7 +10,7 @@ gem 'rails', '~> 6.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'mysql2'
-gem 'rails_admin'
+gem 'rails_admin', '~> 2.1'
 # authentication
 gem 'devise'
 # https://stackoverflow.com/questions/66914608/undefined-method-scope-for-papertrailversionconcernmodule-nomethoderror
