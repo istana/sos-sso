@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# https://github.com/jeremyevans/ruby-string-crypt/pull/1
-# works in <=2.7, but will be deprecated at any time
-ruby '>= 2.5', '< 2.8' if RUBY_ENGINE == 'ruby'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1'
 # Use sqlite3 as the database for Active Record
