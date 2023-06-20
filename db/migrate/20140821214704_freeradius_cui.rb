@@ -5,7 +5,7 @@ class FreeradiusCui < ActiveRecord::Migration[4.2]
 			t.string :callingstationid, null: false, default: ''
 			t.string :username, null: false, default: ''
 			t.string :cui, null: false, default: ''
-			t.timestamp :lastaccounting, null: false, default: '0000-00-00 00:00:00'
+			t.timestamp :lastaccounting, null: false, default: '1970-01-02 00:00:00'
 		end
 
 		execute 'ALTER TABLE cui ADD COLUMN creationdate TIMESTAMP NOT NULL DEFAULT now() AFTER cui';
