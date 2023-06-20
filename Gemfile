@@ -18,10 +18,13 @@ gem 'smbhash'
 gem 'terrapin'
 gem 'kaminari-i18n'
 gem 'rails-i18n'
+gem 'rails_admin-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'dotenv-rails'
 
 group :development, :test do
-  gem 'rails-perftest'
+  gem 'rails-perftest', github: 'rails/rails-perftest'
   gem 'ruby-prof'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
