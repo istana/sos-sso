@@ -18,10 +18,10 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module SosSso6
+module SosSso7
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -30,5 +30,13 @@ module SosSso6
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths << Rails.root.join("lib")
+
+    config.i18n.default_locale = :sk
+
+    # base directory for homes
+    # for SystemTasks::Users.redundant_homedirs and other
+    config.homedirs = "/network/home/"
+    config.management_groups = ['vedenie', 'management']
   end
 end

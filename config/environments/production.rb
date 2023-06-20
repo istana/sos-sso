@@ -52,7 +52,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "sos_sso6_production"
+  # config.active_job.queue_name_prefix = "sos_sso7_production"
 
   config.action_mailer.perform_caching = false
 
@@ -82,4 +82,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.quota = true
+  config.samba = true
+  config.homedir = true
+
+  config.action_controller.relative_url_root = "/sos-sso"
+  config.relative_url_root = "/sos-sso
 end
