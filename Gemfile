@@ -2,15 +2,15 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'mysql2'
-gem 'rails_admin', '~> 2.1'
+gem 'rails_admin', '~> 3.1'
 # authentication
 gem 'devise'
 # https://stackoverflow.com/questions/66914608/undefined-method-scope-for-papertrailversionconcernmodule-nomethoderror
-gem 'paper_trail', '~> 11.0'
+gem 'paper_trail', '~> 14.0'
 gem 'paper_trail-association_tracking'
 # Samba password
 gem 'smbhash'
@@ -31,7 +31,7 @@ end
 
 group :development do
   # Use Puma as the app server
-  gem 'puma', '~> 6'
+  gem 'puma'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5'
@@ -56,3 +56,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'sassc-rails'
