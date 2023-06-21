@@ -88,5 +88,5 @@ Rails.application.configure do
   config.homedir = true
 
   config.action_controller.relative_url_root = "/sos-sso"
-  config.relative_url_root = "/sos-sso
+  config.relative_url_root = "/sos-sso"
 end
