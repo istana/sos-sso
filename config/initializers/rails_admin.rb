@@ -37,6 +37,13 @@ RailsAdmin.config do |config|
     root :maintenance
   end
 
+  config.model 'PaperTrail::Version' do
+    label 'History'
+    list do
+      limited_pagination true
+    end
+  end
+
   config.default_items_per_page = 100
   config.excluded_models << "GroupsUsers"
 end
