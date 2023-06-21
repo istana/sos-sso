@@ -38,3 +38,5 @@ yarn-debug.log*
 /_rsync_cache
 /exports/generated_passwords.txt
 /.env
+
+/config/database.yml
