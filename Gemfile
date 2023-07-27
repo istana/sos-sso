@@ -44,7 +44,7 @@ group :development do
   gem 'minitest'
   gem 'minitest-rails'
   # output formatter
-  gem 'minitest-reporters'
+  gem 'minitest-reporters', github: 'istana/minitest-reporters'
   gem 'database_cleaner'
   gem 'capistrano', require: false
   gem 'capistrano-passenger', require: false
