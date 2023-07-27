@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/istana/rails_admin-i18n.git
+  revision: 7c2dff829959a80f994d33473a66fc2935298c3b
+  specs:
+    rails_admin-i18n (1.18.0)
+
+GIT
   remote: https://github.com/rails/rails-perftest.git
   revision: 00adba5ca81d069c31bf2cbe813c54cfe77c8a62
   specs:
@@ -238,7 +244,6 @@ GEM
       nested_form (~> 0.3)
       rails (>= 6.0, < 8)
       turbo-rails (~> 1.0)
-    rails_admin-i18n (1.18.0)
     railties (7.0.5)
       actionpack (= 7.0.5)
       activesupport (= 7.0.5)
@@ -335,7 +340,7 @@ DEPENDENCIES
   rails-i18n
   rails-perftest!
   rails_admin (~> 3.1)
-  rails_admin-i18n
+  rails_admin-i18n!
   ruby-prof
   sassc-rails
   smbhash
