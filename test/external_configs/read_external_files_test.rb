@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ReadExternalFilesTest < MiniTest::Test
+class ReadExternalFilesTest < Minitest::Test
 	def setup
 		@conf_path = File.join(Rails.root, "external_configs")
 	end

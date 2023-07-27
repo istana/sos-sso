@@ -1,7 +1,7 @@
 require "test_helper"
 require 'fileutils'
 
-class ReadConfigTest < MiniTest::Test
+class ReadConfigTest < Minitest::Test
 	def setup
 		@testfile = 'xxxtest.cf'
 		File.write(@testfile, "foo = bar\n\n#comment\nbaz = zoo\n\nuuu = SELECT x \\\nFROM users\\\nWHERE foo = \"%s\";\n")
