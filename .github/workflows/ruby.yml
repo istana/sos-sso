@@ -17,10 +17,10 @@ jobs:
           mysql database: 'sos-sso-test' # Optional, default value is "test". The specified database which will be create
           mysql root password: "" # Required if "mysql user" is empty, default is empty. The root superuser password
       - uses: actions/checkout@v2
-      - name: Setup Ruby 2.7
+      - name: Setup Ruby 3.2
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.2
           bundler: default
           bundler-cache: true
       - name: Run tests
