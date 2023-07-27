@@ -1,14 +1,4 @@
 GIT
-  remote: https://github.com/istana/minitest-reporters.git
-  revision: ce1e4750f72234a93d359d5e4e73eb06487aca1d
-  specs:
-    minitest-reporters (1.6.0)
-      ansi
-      builder
-      minitest (>= 5.0)
-      ruby-progressbar
-
-GIT
   remote: https://github.com/istana/rails_admin-i18n.git
   revision: 7c2dff829959a80f994d33473a66fc2935298c3b
   specs:
@@ -187,6 +177,11 @@ GEM
     minitest-rails (7.0.0)
       minitest (~> 5.10)
       railties (~> 7.0.0)
+    minitest-reporters (1.6.1)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     mysql2 (0.5.5)
     nested_form (0.3.2)
     net-imap (0.3.7)
@@ -336,7 +331,7 @@ DEPENDENCIES
   m
   minitest
   minitest-rails
-  minitest-reporters!
+  minitest-reporters
   mysql2
   paper_trail (~> 14.0)
   paper_trail-association_tracking
