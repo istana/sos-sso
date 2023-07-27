@@ -23,6 +23,11 @@ jobs:
           ruby-version: 3.2
           bundler: default
           bundler-cache: true
+      - name: copy file
+        uses: canastro/copy-file-action@master
+        with:
+          source: "external_configs/openssl/openssl.cnf"
+          target: "/etc/ssl/"
       - name: Run tests
         env:
           RAILS_ENV: test
